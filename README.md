@@ -12,7 +12,7 @@
 
 <!-- PROJECT LOGO -->
 <div align="center">
-  <h1>Custom Join Messages</h1>
+  <h1>Custom Join Messages - Folia</h1>
   <p>
     The most advanced Join/ Quit Message plugin on the market.
     <br />
