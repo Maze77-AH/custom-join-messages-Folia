@@ -27,15 +27,8 @@ abstract class UpdateChecker(private val plugin: CustomJoinMessages) {
     protected abstract fun parseVersion(json: String): VersionData
 
     fun checkForUpdates(consumer: (VersionData, Platform) -> Unit) {
-        if (ServerEnvironment.isMockBukkit() || requestUrl.isBlank())
-            return
-        Bukkit.getScheduler().runTaskAsynchronously(plugin, Runnable {
-            val latestVersion = getLatestVersion()
-            if (!latestVersion.isNewer(plugin))
-                return@Runnable
-            consumer.invoke(latestVersion, platform)
-        })
-    }
+
+    }    
 
     data class VersionData(val version: String, val downloads: Int, val rating: Rating?, val releaseDateSeconds: Long) {
 

@@ -41,7 +41,6 @@ class AuthMeAuthHook(private val plugin: CustomJoinMessages) : AuthHook {
 
     @EventHandler(priority = EventPriority.MONITOR)
     fun onQuit(e: PlayerQuitEvent) {
-        Bukkit.getScheduler().runTaskLater(plugin, Runnable { loggedInPlayers.remove(e.player) }, 1L)
-    }
-
+        loggedInPlayers.remove(e.player)
+    }    
 }

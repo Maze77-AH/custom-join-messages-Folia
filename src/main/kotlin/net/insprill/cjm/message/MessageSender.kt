@@ -8,6 +8,7 @@ import org.bukkit.Bukkit
 import org.bukkit.entity.Player
 import org.bukkit.permissions.Permission
 import org.bukkit.permissions.PermissionDefault
+import java.util.concurrent.TimeUnit
 
 class MessageSender(private val plugin: CustomJoinMessages) {
 
@@ -73,11 +74,8 @@ class MessageSender(private val plugin: CustomJoinMessages) {
                 val randomKey = getRandomKey(msg.config, "$messagePath.${msg.key}") ?: continue
                 val delay = msg.config.getLong("$messagePath.Delay")
                 val runnable = Runnable { msg.handle(player, players, randomKey, visibility) }
-                if (delay < 1) {
+                if (delay < 1)
                     runnable.run()
-                } else {
-                    Bukkit.getScheduler().runTaskLater(plugin, runnable, delay)
-                }
             }
         }
     }

@@ -42,13 +42,7 @@ class WorldChangeEvent(private val plugin: CustomJoinMessages) : Listener {
 
         plugin.messageSender.trySendMessages(e.player, MessageAction.QUIT, true)
 
-        Bukkit.getScheduler().runTaskLater(plugin, Runnable {
-            plugin.messageSender.trySendMessages(
-                e.player,
-                if (hasJoinedWorldBefore) MessageAction.JOIN else MessageAction.FIRST_JOIN,
-                true
-            )
-        }, 10L)
+        plugin.messageSender.trySendMessages(e.player, if (hasJoinedWorldBefore) MessageAction.JOIN else MessageAction.FIRST_JOIN, true)
     }
 
     fun saveVisitedWorld(player: Player, world: World): Boolean {

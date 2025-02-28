@@ -56,11 +56,7 @@ class BossbarMessage(private val plugin: CustomJoinMessages) : MessageType(plugi
                 }
             }
             CountDown().runTaskTimer(plugin, 1, 1)
-        } else {
-            Bukkit.getScheduler().runTaskLater(plugin, Runnable {
-                bossBar.removeAll()
-            }, info.showTime)
-        }
+        }        
     }
 
     class BarInfo(
